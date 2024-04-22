@@ -21,7 +21,7 @@ namespace XMLWeather
     public partial class Form1 : Form
     {
         // TODO: create list to hold day objects
-        public static string place = "Tokyo";
+        public static string place = "";
         public static JObject jweather;
         static string WeaJsonFilePath = "C:/Users/Rowan Locke/Documents/Vis stud GitHub/XML-Weather-Template/XMLWeather/JsonWeather/" + "" + "weather.json";
 

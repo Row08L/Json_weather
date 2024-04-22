@@ -26,6 +26,7 @@ namespace XMLWeather
         rainChance.Text = (string)Form1.jweather["daily"]["precipitation_probability_max"][0] + (string)Form1.jweather["daily_units"]["precipitation_probability_max"];
         cloudCoverPercent.Text = (string)Form1.jweather["current"]["cloud_cover"] + (string)Form1.jweather["current_units"]["cloud_cover"];
 
+
         }
 
         private void forecastLabel_Click(object sender, EventArgs e)
