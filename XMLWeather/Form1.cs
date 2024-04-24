@@ -24,13 +24,15 @@ namespace XMLWeather
         public static string place = "";
         public static JObject jweather;
         static string WeaJsonFilePath = "C:/Users/Rowan Locke/Documents/Vis stud GitHub/XML-Weather-Template/XMLWeather/JsonWeather/" + "" + "weather.json";
+        static string locJsonFilePath = "C:/Users/Rowan Locke/Documents/Vis stud GitHub/XML-Weather-Template/XMLWeather/JsonWeather/location.json";
 
         public Form1()
         {
             InitializeComponent();
             string responseBody = File.ReadAllText(WeaJsonFilePath);
             jweather = JObject.Parse(responseBody);
-
+            string locationJobj = File.ReadAllText(locJsonFilePath);
+            //JProperty location = new JProperty("location", (string)locationJobj["features"][0]["place_name"]);
             // open weather screen for todays weather
             CurrentScreen cs = new CurrentScreen();
             this.Controls.Add(cs);
@@ -40,14 +42,6 @@ namespace XMLWeather
         {
             //XmlReader reader = XmlReader.Create("http://api.openweathermap.org/data/2.5/forecast/daily?q=Stratford,CA&mode=xml&units=metric&cnt=7&appid=3f2e224b815c0ed45524322e145149f0");
 
-           // while (reader.Read())
-            //{
-                //TODO: create a day object
-                
-                //TODO: fill day object with required data
-
-                //TODO: if day object not null add to the days list
-            //}
         }
 
         public static async void ExtractAll()
@@ -70,8 +64,6 @@ namespace XMLWeather
                     // Check if the request was successful
                     if (response.IsSuccessStatusCode)
                     {
-                        string locJsonFilePath = "C:/Users/Rowan Locke/Documents/Vis stud GitHub/XML-Weather-Template/XMLWeather/JsonWeather/location.json";
-
                         // Read the response content as a string
                         string responseBody = await response.Content.ReadAsStringAsync();
                         JObject jsonObject = JObject.Parse(responseBody);
