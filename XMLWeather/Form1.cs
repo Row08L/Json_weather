@@ -28,6 +28,15 @@ namespace XMLWeather
 
         public Form1()
         {
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            string parent1 = Directory.GetParent(currentDirectory).FullName;
+            string parent2 = Directory.GetParent(parent1).FullName;
+            string parent3 = Directory.GetParent(parent2).FullName;
+
+            WeaJsonFilePath = Path.Combine(parent3, "JsonWeather", "weather.json");
+            locJsonFilePath = Path.Combine(parent3, "JsonWeather", "location.json");
+
             InitializeComponent();
             string responseBody = File.ReadAllText(WeaJsonFilePath);
             jweather = JObject.Parse(responseBody);
